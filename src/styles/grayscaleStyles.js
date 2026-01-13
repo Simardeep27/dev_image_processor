@@ -1,0 +1,125 @@
+export const styles = {
+  page: {
+    minHeight: "100vh",
+    width: "100%",
+    padding: 24,
+    boxSizing: "border-box",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "stretch",
+  },
+  container: {
+    width: "min(1200px, 100%)",
+    display: "grid",
+    gap: 16,
+  },
+
+  dropzone: {
+    width: "100%",
+    minHeight: 160,
+    border: "2px dashed rgba(255,255,255,0.25)",
+    borderRadius: 14,
+    padding: 18,
+    cursor: "pointer",
+    userSelect: "none",
+    background: "rgba(255,255,255,0.03)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  dropzoneActive: {
+    borderColor: "rgba(255,255,255,0.55)",
+    background: "rgba(255,255,255,0.07)",
+  },
+  dropTitle: {
+    fontWeight: 800,
+    marginBottom: 6,
+    fontSize: 16,
+  },
+  dropSub: {
+    opacity: 0.75,
+    fontSize: 13,
+    lineHeight: 1.4,
+  },
+
+  actions: {
+    display: "flex",
+    gap: 12,
+    alignItems: "center",
+    flexWrap: "wrap",
+  },
+  button: {
+    padding: "10px 14px",
+    borderRadius: 10,
+    border: "1px solid rgba(255,255,255,0.18)",
+    background: "rgba(255,255,255,0.06)",
+    color: "white",
+    cursor: "pointer",
+    fontSize: 14,
+  },
+  buttonDisabled: {
+    opacity: 0.5,
+    cursor: "not-allowed",
+  },
+  linkButton: {
+    padding: "10px 14px",
+    borderRadius: 10,
+    border: "1px solid rgba(255,255,255,0.18)",
+    background: "rgba(255,255,255,0.06)",
+    color: "white",
+    textDecoration: "none",
+    fontSize: 14,
+  },
+
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
+    gap: 16,
+  },
+  panel: {
+    border: "1px solid rgba(255,255,255,0.12)",
+    borderRadius: 14,
+    padding: 14,
+    background: "rgba(255,255,255,0.03)",
+  },
+  panelTitle: {
+    marginBottom: 10,
+    fontWeight: 700,
+    opacity: 0.9,
+  },
+
+  canvasWrap: {
+    width: "100%",
+    aspectRatio: "16 / 10",
+    borderRadius: 12,
+    border: "1px solid rgba(255,255,255,0.18)",
+    overflow: "hidden",
+    display: "grid",
+    placeItems: "center",
+    background: "rgba(0,0,0,0.15)",
+    position: "relative",
+  },
+  canvas: {
+    width: "100%",
+    height: "100%",
+    display: "block",
+  },
+  overlay: {
+  position: "absolute",
+  inset: 0,
+  display: "grid",
+  placeContent: "center",
+  background: "rgba(0,0,0,0.45)",
+  backdropFilter: "blur(2px)",
+  textAlign: "center",
+},
+spinner: {
+  width: 18,
+  height: 18,
+  borderRadius: "50%",
+  border: "2px solid rgba(255,255,255,0.25)",
+  borderTopColor: "rgba(255,255,255,0.9)",
+  animation: "spin 0.8s linear infinite",
+},
+
+};
