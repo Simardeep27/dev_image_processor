@@ -1,16 +1,50 @@
-# React + Vite
+# Pyodide Image Grayscale Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A static web application that allows users to upload an image and convert it to grayscale directly in the browser using **Pyodide (Python compiled to WebAssembly)**.  
+The application is built with **React + Vite** and deployed on **GitHub Pages**.
 
-Currently, two official plugins are available:
+## Project Features
+- Upload an image (via file picker or drag-and-drop)
+- Convert the image to grayscale using Python(numpy)
+- View a side-by-side comparison (original vs grayscale)
+- Download the processed grayscale image
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Design Decisions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Python Processing
+- **Pyodide** is used to run Python entirely in the browser without any backend.
+- The grayscale conversion logic is implemented in using **NumPy**, leveraging vectorized operations for clarity and correctness.
+- NumPy was chosen over alternatives for its simplicity, performance, and suitability for array-based image manipulation.
+- **AVG Time taken for conversion through numpy: 2068.00 ms**
 
-## Expanding the ESLint configuration
+2. JavaScript-Python Bridge
+- The JS Python boundary is handled carefully to avoid unnecessary complexity (given the time duration of 1-2 hours):
+  - Raw RGBA pixel buffers are extracted from the canvas using `getImageData`.
+  - These buffers are converted into NumPy arrays inside Pyodide.
+  - The processed pixel data is returned to JavaScript and rendered back to the output canvas.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. UI components
+- Built using **React** with functional components and hooks.
+- UI state (loading, busy state, image metadata) is managed via `useState` and `useRef`.
+- The interface prioritizes clarity:
+  - Prominent drag-and-drop upload area
+  - Explicit “Convert to Grayscale” action
+  - Side-by-side before/after comparison
+  - Download button for the processed image
+
+4. Codebase Organization
+- The Codebase is organized such that it is easy to understand and replicate.
+  - Components: React UI Components
+  - Hooks: Pyodide initialization hook
+  - Libs: Pyodide and Image heler utils
+  - Styles: Centralized Styles for the canvas, dropzone and actions
+
+
+5. Deployment Link:
+   https://simardeep27.github.io/dev_image_processor/
+
+
+7. Local deployment can be easily replicated by:
+ - ```bash npm install```
+ - ```bash npm run dev```
